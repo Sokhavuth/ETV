@@ -1,0 +1,40 @@
+/*public/css/login.css*/
+body{
+  background: lightgrey;
+  position: relative;
+}
+
+#login{
+  width: 500px;
+  background: lavender;
+  margin:30px auto;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 140px auto;
+  grid-gap: 10px;
+  font: 14px/1.5 OdorMeanChey;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%,0);
+}
+
+#login input{
+  padding: 10px;
+}
+
+#login a{
+  text-align: right;
+  padding: 10px 0;
+}
+
+@media only screen and (max-width: 600px){
+  #login{
+    grid-template-columns: 100%;
+    width: 100%;
+  }
+
+  #login a{
+    text-align: left;
+    padding: 0;
+  }
+}

@@ -1,0 +1,99 @@
+/*static/css/main.css*/
+a{
+  text-decoration: none;
+  color: rgb(6, 100, 138)
+}
+
+a:hover{
+  color: rgb(35, 118, 226);
+}
+
+a img:hover{
+  opacity: .7;
+}
+
+.region{
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+body{
+  margin: 0;
+  padding: 0;
+  font: 14px/1.5 OdorMeanChey;
+  background: lightgrey;
+}
+
+#blog-header{
+  background: lavender;
+  margin: 0;
+  padding: 0;
+}
+
+#blog-header div{
+  padding: 7px;
+  display: grid;
+  grid-template-columns: 40px auto auto auto;
+  align-items: center;
+}
+
+#blog-header #blog-title{
+  font: 30px/1.5 Moul;
+}
+
+#blog-header img{
+  max-height: 40px;
+}
+
+#blog-header #log-in{
+  text-align: right;
+}
+
+#blog-header form.search{
+  display:grid;
+  grid-template-columns: 75% 25%;
+}
+#blog-header form.search input[type=text] {
+  padding: 7px 10px;
+  box-sizing: border-box;
+}
+#blog-header form.search button {
+  cursor: pointer;
+  width:100%;
+  font: 14px/1.5 OdorMeanChey;
+}
+#blog-header form.search button:hover {
+  opacity:.6;
+}
+
+#header-border{
+  background: rgb(190, 189, 189);
+  height: 20px;
+}
+
+#main{
+  display: grid;
+  grid-template-columns: 20% calc(80% - 15px);
+  grid-gap: 15px;
+  margin-top: 15px;
+}
+
+@media only screen and (max-width: 600px){
+  #blog-header div{
+    
+    grid-template-columns: 100%;
+    text-align: center;
+  }
+
+  #blog-header form.search{
+    padding: 10px;
+  }
+
+  #blog-header #log-in{
+    text-align: center;
+  }
+
+  #main{
+    grid-template-columns: 100%;
+  }
+}
