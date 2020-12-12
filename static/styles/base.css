@@ -1,0 +1,57 @@
+/*static/styles/base.css*/
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+a{
+  text-decoration: none;
+  color: orange;
+}
+a:hover{
+  opacity: .7;
+}
+.region{
+  max-width: 1200px;
+  margin: 0 auto;
+}
+body{
+  font: 14px/1.5 Vidaloka, OdorMeanChey;
+  background: rgb(22, 22, 22);
+  color: white;
+}
+#menu{
+  background: rgb(48, 48, 48);
+}
+.menu-outer{
+  display: grid;
+  grid-template-columns: 25% auto 20%;
+  align-items: center;
+}
+.menu-outer #logo{
+  display: grid;
+  grid-template-columns: 50px auto;
+  align-items: center;
+  grid-gap: 5px;
+  font: 26px/1.5 Oswald, Moul;
+}
+.menu-outer #logo img{
+  width: 100%;
+}
+.menu-outer #search{
+  text-align: right;
+  display: grid;
+  grid-template-columns: auto 25%;
+  
+}
+.menu-outer #search input{
+  font: 14px/1.5 Vidaloka, OdorMeanChey;
+  padding: 0 5px;
+  
+}
+@media only screen and (max-width: 600px){
+  .menu-outer{
+    grid-template-columns: 100%;
+    padding: 10px;
+  }
+}

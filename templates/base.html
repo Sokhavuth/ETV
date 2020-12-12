@@ -1,0 +1,77 @@
+<!--templates/base.html-->
+<!DOCTYPE html>
+<html>
+  <head>
+    {% block head %}
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>{{data['siteTitle']}}</title>
+    <script src="/static/scripts/jQuery.js"></script>
+    <script src='/static/scripts/base.js'></script>
+    <link href="/static/styles/base.css" rel="stylesheet">
+    <link href="/static/styles/menu.css" rel="stylesheet">
+    <link href="/static/fonts/setup.css" rel='stylesheet'>
+    <link href="/static/images/site_logo.png" rel="icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    {% endblock %}
+  </head>
+  <body>
+    <section>
+    {% block header %}
+    <nav id='menu'>
+      <div class="menu-outer region">
+        <div id="logo">
+          <a href="/"><img src="/static/images/site_logo.png" /></a>
+          <a href="/">{{ data['siteTitle'] }}</a>
+        </div>
+        <div class="topnav " id="myTopnav">
+          <a href="#">ព័ត៌មាន</a>
+          <a href="#">កំសាន្ត</a>
+          <a href="#">កីឡា</a>
+          <a href="#">រឿងភាគ</a>
+          <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+          </a>
+        </div>
+        <form id="search">
+          <input type="text" placeholder="Search" required />
+          <input type="submit" value="ស្វែងរក" />
+        </form>
+      </div>
+      <script>
+        function myFunction() {
+          var x = document.getElementById("myTopnav");
+          if (x.className === "topnav") {
+            x.className += " responsive";
+          } else {
+            x.className = "topnav";
+          }
+        }
+      </script>
+    </nav>
+    {% endblock %}
+    </section>
+
+    <section id="main" class="main region">
+      {% block main %}
+      <div id="content">
+      {% block content %}
+        Content
+      {% endblock %}
+      </div>
+      <div id="sidebar">
+      {% block sidebar %}
+        Sidebar
+      {% endblock %}
+      </div>
+      {% endblock %}
+    </section>
+
+    <section id="footer" class="footer region">
+      {% block footer %}
+      &copy; Copyright 2020 by <a href="https://www.khmerweb.app/">Khmer Web</a>
+      <script></script>
+      {% endblock %}
+    </section>
+  </body>
+</html>
