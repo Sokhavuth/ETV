@@ -1,6 +1,6 @@
 #main.py
 from flask import Flask
-from controllers.index import Index
+from routes.index import Index
  
 app = Flask(__name__)
 index = Index()

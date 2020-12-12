@@ -1,2 +1,36 @@
 <!--templates/index.html-->
 {% extends "base.html" %}
+
+{% block head %}
+{{ super() }}
+<link href="/static/styles/index.css" rel="stylesheet" >
+<script src="/static/scripts/index.js"></script>
+{% endblock %}
+
+{% block channel %}
+<div class="channel region">
+  <div class="channel-outer">
+    <iframe  src="https://www.youtube.com/embed/videoseries?list=UUHwYHdX37UUt6d9e1wAp9Bw" 
+      frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+    </iframe>
+  </div>
+
+  <div class="channel-outer">
+    <iframe  src="https://www.youtube.com/embed/videoseries?list=UUC3kuksIZZQO6kVQlApEW1w" 
+      frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+    </iframe>
+  </div>
+
+  <div class="channel-outer">
+    <iframe  src="https://www.youtube.com/embed/videoseries?list=UUd3Jmi0SGGG-NvcEOge6bxw" 
+      frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+    </iframe>
+  </div>
+
+  <div class="channel-outer">
+    <iframe  src="https://www.youtube.com/embed/videoseries?list=UUGCeeEq-6y85svJ1atW5Bvw" 
+      frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+    </iframe>
+  </div>
+</div>
+{% endblock %}

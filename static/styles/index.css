@@ -1,102 +1,25 @@
-/*static/styles/insex.css*/
-#front-panel{
-  background:lightgrey; 
-  margin-top: 1px;
+/*static/styles/index.css*/
+.channel{
+  margin-top: 10px;
   display: grid;
-  grid-template-columns: auto auto auto auto;
-  grid-gap: 10px 10px;
+  grid-template-columns: auto auto;
+  grid-gap: 10px;
   padding: 10px;
+  background: black;
 }
-#front-panel .wrapper1 {
-  grid-column: 1 / span 2;
-  grid-row: 1 / span 2;
-}
-#front-panel .wrapper1 div, #front-panel .wrapper div{
-  overflow: hidden;
-}
-#front-panel .wrapper1 .play-icon, 
-#front-panel .wrapper .play-icon{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 18%;
-  transform: translate(-50%, -50%);
-}
-#front-panel .wrapper1{
-  font: 18px/1.75 Oswald, Koulen;
-  color: white;
-}
-#front-panel .title{
-  width: 100%;
-  color: white;
-  background-image: linear-gradient(to top, black, transparent);
-  position:absolute;
-  bottom:0;
-  padding: 5px;
-  text-shadow: 2px 2px 5px black;
-}
-#front-panel .wrapper{
-  color: white;
-}
-#front-panel .date-news{
-  position:absolute;
-  top:0;
-  right:5px;
-  text-shadow: 2px 2px 5px black;
-}
-#front-nav{
-  text-align: center;
-  background: lightgrey;
-  margin-top: 1px;
-  padding: 5px 0 0;
-}
-#front-nav img{
-  height: 25px;
-}
-#front-nav img:hover{
-  opacity: .7;
-  cursor: pointer;
-}
-@media only screen and (max-width: 600px){
-  #front-panel{
-    grid-template-columns: 100%;
-  }
-  #front-panel .wrapper1 {
-    grid-column: 1 / span 1;
-    grid-row: 1 / span 1;
-  }
-}
-#books{
-  display: grid;
-  grid-template-columns: auto auto auto auto;
-  grid-gap: 15px;
-  margin-top: 20px;
-}
-#books a{
-  width: 100%;
+.channel .channel-outer{
   position: relative;
-  padding-top: 140%;
-  overflow: hidden;
+  padding-top: 56.25%;
 }
-#books img{
+.channel iframe{
   position: absolute;
-  width: 100%;
-  min-height: 100%;
   top: 0;
   left: 0;
-  border: 1px solid grey;
-}
-#load-more{
-  text-align: center;
-  padding-top: 20px;
-}
-#load-more img:hover{
-  opacity: .5;
-  cursor: pointer;
+  width: 100%;
+  height: 100%;
 }
 @media only screen and (max-width: 600px){
-  #books{
+  .channel{
     grid-template-columns: 100%;
-    padding: 10px;
   }
 }

@@ -9,7 +9,6 @@
     <script src="/static/scripts/jQuery.js"></script>
     <script src='/static/scripts/base.js'></script>
     <link href="/static/styles/base.css" rel="stylesheet">
-    <link href="/static/styles/menu.css" rel="stylesheet">
     <link href="/static/fonts/setup.css" rel='stylesheet'>
     <link href="/static/images/site_logo.png" rel="icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -29,7 +28,7 @@
           <a href="#">កំសាន្ត</a>
           <a href="#">កីឡា</a>
           <a href="#">រឿងភាគ</a>
-          <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+          <a href="javascript:void(0);" class="icon" onclick="mobileMenu()">
             <i class="fa fa-bars"></i>
           </a>
         </div>
@@ -39,7 +38,7 @@
         </form>
       </div>
       <script>
-        function myFunction() {
+        function mobileMenu() {
           var x = document.getElementById("myTopnav");
           if (x.className === "topnav") {
             x.className += " responsive";
@@ -50,6 +49,10 @@
       </script>
     </nav>
     {% endblock %}
+    </section>
+
+    <section>
+      {% block channel %}{% endblock %}
     </section>
 
     <section id="main" class="main region">
