@@ -16,6 +16,10 @@
   src: url(OdorMeanChey.ttf);
 }
 @font-face {
+  font-family: Nokora;
+  src: url(Nokora.ttf);
+}
+@font-face {
   font-family: Rooster;
   src: url(Rooster.ttf);
 }
@@ -30,4 +34,12 @@
 @font-face {
   font-family: Oswald;
   src: url(Oswald.ttf);
+}
+@font-face {
+  font-family: Anton;
+  src: url(Anton.ttf);
+}
+@font-face {
+  font-family: Vidaloka;
+  src: url(Vidaloka.ttf);
 }

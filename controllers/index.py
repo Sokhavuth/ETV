@@ -1,28 +1,11 @@
 #controllers/index.py
-import config
-from bottle import Bottle, template, static_file
+from flask import render_template
+from flask_classful import FlaskView, route
  
-class Index(Bottle):
+class Index(FlaskView):
     def __init__(self):
-        super(Index, self).__init__()
-        self.route('/static/images/<filename>', callback=self.loadImage)
-        self.route('/static/styles/<filename>', callback=self.loadStyle)
-        self.route('/static/scripts/<filename>', callback=self.loadScript)
-        self.route('/static/fonts/<filename>', callback=self.loadFont)
+        pass
  
-        self.route('/', callback=self.index)
- 
-    def loadImage(self, filename):
-        return static_file(filename, root='./public/images')
- 
-    def loadStyle(self, filename):
-        return static_file(filename, root='./public/css')
- 
-    def loadScript(self, filename):
-        return static_file(filename, root='./public/js')
- 
-    def loadFont(self, filename):
-        return static_file(filename, root='./public/fonts')
- 
+    @route('/')
     def index(self):
-        return template('index', data=config.vdict)
+        return render_template('index.html', data={'blogTitle':'ទូរទស្សន៍​យើង'})
