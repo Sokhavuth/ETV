@@ -1,0 +1,15 @@
+<!--templates/login.html-->
+{% extends 'base.html' %}
+
+{% block head %}
+{{ super() }}
+<link href="/static/styles/login.css" rel="stylesheet">
+{% endblock %}
+
+{% block channel %}
+<form id="login" action="/login/" method="POST">
+  <a>Email:</a><input type="email" name="femail" required />
+  <a>ពាក្យ​សំងាត់ៈ</a><input type="password" name="fpassword" required />
+  <a></a><input type='submit' value="បញ្ជូន" />
+</form>
+{% endblock %}

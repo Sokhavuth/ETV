@@ -5,7 +5,7 @@
     {% block head %}
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>{{data['siteTitle']}}</title>
+    <title>{{data['site_title']}}</title>
     <script src="/static/scripts/jQuery.js"></script>
     <script src='/static/scripts/base.js'></script>
     <link href="/static/styles/base.css" rel="stylesheet">
@@ -21,13 +21,14 @@
       <div class="menu-outer region">
         <div id="logo">
           <a href="/"><img src="/static/images/site_logo.png" /></a>
-          <a href="/">{{ data['siteTitle'] }}</a>
+          <a href="/">{{ data['site_title'] }}</a>
         </div>
         <div class="topnav " id="myTopnav">
           <a href="#">ព័ត៌មាន</a>
           <a href="#">កំសាន្ត</a>
           <a href="#">កីឡា</a>
           <a href="#">រឿងភាគ</a>
+          <a href="/login/">ចូល​ក្នុង</a>
           <a href="javascript:void(0);" class="icon" onclick="mobileMenu()">
             <i class="fa fa-bars"></i>
           </a>
@@ -59,12 +60,12 @@
       {% block main %}
       <div id="content">
       {% block content %}
-        Content
+        
       {% endblock %}
       </div>
       <div id="sidebar">
       {% block sidebar %}
-        Sidebar
+        
       {% endblock %}
       </div>
       {% endblock %}

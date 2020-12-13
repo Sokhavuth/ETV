@@ -1,0 +1,19 @@
+/*static/styles/login.css*/
+#login{
+  width: 400px;
+  background: grey;
+  margin: 30px auto 0;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 21% auto;
+  grid-gap: 5px;
+  align-items: center;
+}
+#login a{
+  color: black;
+  text-align: right;
+}
+#login input{
+  font: 14px/1.5 Vidaloka, OdorMeanChey;
+  padding: 0 5px;
+}
