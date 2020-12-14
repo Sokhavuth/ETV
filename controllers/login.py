@@ -36,4 +36,4 @@ class Login():
       if not user:
         self.set_root()
 
-      return render_template('login.html', data=vdict)
+    return render_template('login.html', data=vdict)
