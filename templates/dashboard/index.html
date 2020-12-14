@@ -1,0 +1,41 @@
+<!--templates/dashboard/index.html-->
+{% extends 'base.html' %}
+
+{% block head %}
+{{ super() }}
+<link href="/static/styles/dashboard/index.css" rel="stylesheet">
+{% endblock %}
+
+{% block header %}
+  <nav id='menu'>
+    <div class="menu-outer region">
+      <div id="logo">
+        <a href="/"><img src="/static/images/site_logo.png" /></a>
+        <a href="/dashboard/">{{ data['site_title'] }}</a>
+      </div>
+      <form id="search">
+        <select id="search-option">
+          <option>ការផ្សាយ</option>
+        </select>
+        <input type="text" placeholder="Search" required />
+        <input type="submit" value="ស្វែងរក" />
+      </form>
+      <div class="logout">
+        <a href="/dashboard/logout/">ចេញ​ក្រៅ</a>
+      </div>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block main %}
+  <div id="sidebar">
+  {% block sidebar %}
+      
+  {% endblock %}
+  </div>
+  <div id="content">
+  {% block content %}
+        
+  {% endblock %}
+  </div>
+{% endblock %}

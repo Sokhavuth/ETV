@@ -1,0 +1,33 @@
+/*static/styles/dashboard/index.css*/
+body{
+  background: grey;
+}
+#menu{
+  background: lightgrey;
+  border-bottom: 10px solid rgb(56, 56, 56)
+}
+.menu-outer{
+  grid-template-columns: 35% auto 20%;
+}
+#menu a{
+  color: black;
+}
+#menu #search{
+  grid-template-columns: 20% auto 15%;
+}
+#menu #search #search-option{
+  font: 14px/1.5 Vidaloka, OdorMeanChey;
+}
+#menu .logout{
+  text-align: right;
+}
+#main{
+  margin-top: 5px;
+  display: grid;
+  grid-template-columns: 25% auto;
+  grid-gap: 15px;
+  min-height: 470px;
+}
+#main #sidebar, #main #content{
+  background: lightgrey;
+}
