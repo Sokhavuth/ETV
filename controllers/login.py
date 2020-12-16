@@ -24,8 +24,10 @@ class Login():
       email = request.form['femail']
       password = request.form['fpassword']
 
-      if(self.userdb.check_user(email, password)):
-        session['logged-in'] = email
+      user = self.userdb.check_user(email, password)
+      if(user):
+        session['author-id'] = user[0]
+        session['logged-in'] = user[1]
         return redirect('/dashboard/')
         
     else:

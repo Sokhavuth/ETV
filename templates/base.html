@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>{{data['site_title']}}</title>
     <script src="/static/scripts/jQuery.js"></script>
-    <script src='/static/scripts/base.js'></script>
+    <script src="/static/scripts/ckeditor/ckeditor.js"></script>
     <link href="/static/styles/base.css" rel="stylesheet">
     <link href="/static/fonts/setup.css" rel='stylesheet'>
     <link href="/static/images/site_logo.png" rel="icon">
@@ -69,6 +69,10 @@
       {% endblock %}
       </div>
       {% endblock %}
+    </section>
+
+    <section>
+      {% block item_listing %}{% endblock %}
     </section>
 
     <section id="footer" class="footer region">

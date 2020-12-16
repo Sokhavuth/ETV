@@ -60,7 +60,7 @@ class Userdb():
       self.cursor.execute(SQL, (amount*page, amount))
       result = self.cursor.fetchall()
     else:
-      SQL = "SELECT * FROM USERS ORDER BY ID DESC LIMIT %s"
+      SQL = "SELECT * FROM USERS ORDER BY CDATE DESC, CTIME DESC LIMIT %s"
       self.cursor.execute(SQL, (amount,))
       result = self.cursor.fetchall()
 
@@ -70,9 +70,60 @@ class Userdb():
   def check_user(self, *user):
     self.set_conection()
 
-    SQL = "SELECT EMAIL, PASSWORD FROM USERS WHERE EMAIL = %s AND PASSWORD = %s LIMIT 1"
+    SQL = "SELECT * FROM USERS WHERE EMAIL = %s AND PASSWORD = %s LIMIT 1"
     self.cursor.execute(SQL, (user))
     result = self.cursor.fetchone()
     
     self.conn.close()
+    return result
+
+  def check_email(self, email):
+    self.set_conection()
+
+    SQL = "SELECT EMAIL, PASSWORD FROM USERS WHERE EMAIL = %s LIMIT 1"
+    self.cursor.execute(SQL, (email,))
+    result = self.cursor.fetchone()
+    
+    self.conn.close()
+    return result
+
+  def check_author(self, id):
+    self.set_conection()
+
+    SQL = "SELECT * FROM USERS WHERE ID = %s LIMIT 1"
+    self.cursor.execute(SQL, (id,))
+    result = self.cursor.fetchone()
+    
+    self.conn.close()
+    return result
+
+  def delete(self, id):
+    self.set_conection()
+
+    SQL = "DELETE FROM USERS WHERE ID = %s"
+    self.cursor.execute(SQL, (id,))
+
+    self.conn.commit()
+    self.conn.close()
+
+  def update(self, *user):
+    self.set_conection()
+
+    sql = "UPDATE USERS SET USERNAME = %s, EMAIL = %s, PASSWORD = %s, ROLE = %s, CONTENT = %s, CDATE = %s, CTIME = %s, AUTHOR = %s WHERE ID = %s"
+    self.cursor.execute(sql, user)
+
+    self.conn.commit()
+    self.conn.close()
+
+  def search(self, query):
+    self.set_conection()
+  
+    sql = "SELECT * from USERS WHERE"
+    sql += " EMAIL LIKE '%"+query+"%'"
+    sql += " OR CONTENT LIKE '%"+query+"%'"
+    sql += " ORDER BY CATDATE DESC, CATTIME DESC LIMIT 20"
+
+    self.cursor.execute(sql)
+    
+    result = self.cursor.fetchall()
     return result

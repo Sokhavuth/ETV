@@ -1,0 +1,72 @@
+<!--templates/dashboard/index.html-->
+{% extends 'dashboard/index.html' %}
+  
+{% block head %}
+{{ super() }}
+<link href="/static/styles/dashboard/user.css" rel="stylesheet">
+<script src="/static/scripts/dashboard/user.js"></script>
+{% endblock %}
+
+{% block content %}
+  <form id='signup' action='/dashboard/user/signup/' method="POST" >
+    {% if 'user' in data %}
+    <input id='user-title' value="{{ data['user'][1] }}" name="fusername" type="text" placeholder="ឈ្មោះ​អ្នក​ប្រើប្រាស់" required />
+    <textarea name="fcontent" id="editor" >{{ data['user'][5] }}</textarea>
+    {% else: %}
+    <input id='user-title' value="" name="fusername" type="text" placeholder="ឈ្មោះ​អ្នក​ប្រើប្រាស់" required />
+    <textarea name="fcontent" id="editor" ></textarea>
+    {% endif %}
+    <div id="bottombar">
+      <input id="submit" class="bottom-widget" type="submit" value="ចុះ​ឈ្មោះ">
+      {% if 'user' in data %}
+      <input id="user-password" value="{{ data['user'][3] }}" class="bottom-widget" type="password" name="fpassword" />
+      <select id="user-role" class="bottom-widget" name="frole" >
+        <option>Author</option>
+        <option>Admin</option>
+      </select>
+      <script>$("#user-role").val("{{data['user'][4]}}").change();</script>
+      <input id="user-date" value="{{ data['datetime'][0] }}" class="bottom-widget user-date" type="text" name="fdate" required />
+      <input id="user-time" value="{{ data['datetime'][1] }}" class="bottom-widget user-time" type="text" name="ftime" required />
+      <input type='email' value="{{ data['user'][2] }}" placeholder="E-MAIL" id="user-author" class="user-time" name="femail" required />
+      {% else %}
+      <input id="user-password" value="" class="bottom-widget" type="password" name="fpassword" />
+      <select id="user-role" class="bottom-widget" name="frole" >
+        <option>Author</option>
+        <option>Admin</option>
+      </select>
+      <input id="user-date" value="{{ data['datetime'][0] }}" class="bottom-widget user-date" type="text" name="fdate" required />
+      <input id="user-time" value="{{ data['datetime'][1] }}" class="bottom-widget user-time" type="text" name="ftime" required />
+      <input type='email' placeholder="E-MAIL" id="user-author" class="user-time" name="femail" required />
+      {% endif %}
+    </div>
+  </form>
+  <div id="message">{{ data['message'] }}</div>
+  <script src="/static/scripts/ckeditor/config.js"></script>
+{% endblock %}
+  
+{% block item_listing %}
+    <ul id="item-listing" class="item-listing region">
+      {% if 'users' in data %}
+      {% for v in range(data['users']|length) %}
+      <li class="user">
+        <a class="thumbnail" href="/user/{{ data['users'][v][0] }}">
+          <img src="{{data['thumbs'][v]}}" />
+        </a>
+        <div class='title'>
+          <a href="/user/{{ data['users'][v][1] }}">{{ data['users'][v][1] }}</a>
+          <div>{{ data['users'][v][4] }}</div>
+          <span>{{ data['users'][v][6].strftime('%d/%m/%Y') }}</span>
+        </div>
+        <div class="crud">
+          <div class="user">{{ data['users'][v][8] }}</div>
+          <a href='/dashboard/user/edit/{{ data["users"][v][0] }}'><img src="/static/images/edit.png" /></a>
+          <a href='/dashboard/user/delete/{{ data["users"][v][0] }}'><img src="/static/images/delete.png" /></a>
+        </div>
+      </li>
+      {% endfor %}
+      {% endif %}
+    </ul>
+    <div id="load-more" class="load-more region">
+      <img onclick="user.load_items('/dashboard/user/load/', 'users')" src="/static/images/load-more.png" />
+    </div>
+{% endblock %}

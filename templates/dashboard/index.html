@@ -30,12 +30,22 @@
 {% block main %}
   <div id="sidebar">
   {% block sidebar %}
-      
+    <div class="menu-item">
+      <a href="/dashboard/user/signup/"><img src="/static/images/user.png" /></a>
+      <span><a href="/dashboard/user/signup/">អ្នក​ប្រើប្រាស់</a></span>
+    </div>
   {% endblock %}
   </div>
   <div id="content">
-  {% block content %}
-        
-  {% endblock %}
+  {% block content %}{% endblock %}
   </div>
+{% endblock %}
+
+{% block item_listing %}
+<ul id="item-listing" class="item-listing region">
+
+</ul>
+<div id="load-more" class="load-more region">
+  <img onclick="lib.load_items('/dashboard/post/load/', 'posts')" src="/static/images/load-more.png" />
+</div>
 {% endblock %}
