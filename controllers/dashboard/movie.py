@@ -24,6 +24,7 @@ class Movie():
       country = request.form['fcountry']
       date = request.form['fdate']
       time = request.form['ftime']
+      author = session['logged-in']
 
       try:
         date = datetime.datetime.strptime(date, "%d/%m/%Y")
@@ -38,7 +39,6 @@ class Movie():
         return render_template('dashboard/movie.html', data=vdict)
 
       if 'edit-id' in session:
-        author = session['logged-in']
         id = session['edit-id']
         self.moviedb.update(vid, type, title, country, content, date, time, author, id)
         session.pop('edit-id', None)
