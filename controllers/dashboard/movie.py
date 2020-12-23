@@ -1,4 +1,4 @@
-#controllers/dashboard/category.py
+#controllers/dashboard/movie.py
 import config, copy, lib, datetime, uuid
 from flask import render_template, session, request, redirect
 from models.userdb import Userdb
@@ -75,11 +75,7 @@ class Movie():
     return redirect('/login/')
 
   def delete(self, id):
-    author_id = session['author-id']
-    author_role = self.userdb.check_author(author_id)
-    if author_role[4] == 'Admin':
-      self.moviedb.delete(id)
-
+    self.moviedb.delete(id)
     return redirect('/dashboard/movie/')
 
   def load(self):

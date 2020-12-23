@@ -1,0 +1,60 @@
+/*static/styles/movie.css*/
+#content{
+  padding: 20px;
+}
+#content .post-title{
+  font: 22px/1.5 Oswald, Koulen;
+}
+#content .post-title span, #content .author span{
+  float: right;
+}
+#content .author{
+  margin-top: 20px;
+}
+#content .author img{
+  width: 30px;
+  margin-left: 5px;
+}
+#content .country{
+  margin-top: 5px;
+}
+#content #video-wrapper{
+  margin-top: 30px;
+}
+#content #video-player{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+#content #random-movies{
+  display: grid;
+  grid-template-columns: calc(50% - 5px) calc(50% - 5px);
+  grid-gap: 10px;
+  margin-top: 10px;
+}
+#content #random-movies a,
+#content #random-movies img{
+  width: 100%;
+}
+#content #random-movies img{
+  float: left;
+}
+#content #random-movies .movie-wrapper{
+  position: relative;
+  text-align: center;
+}
+#content #random-movies .movie-title{
+  display: block;
+  position: absolute;
+  bottom: 0;
+  padding: 10px 0;
+  font: 18px/1.5 Vidaloka, HandWriting;
+  text-shadow: 2px 2px 5px black;
+  background-image: linear-gradient(to top, black, transparent);
+}
+
+@media only screen and (max-width: 600px){
+  #content #random-movies{
+    grid-template-columns: 100%;
+  }
+}

@@ -48,7 +48,7 @@ class Userdb():
     self.conn.commit()
     self.conn.close()
 
-  def select(self, amount=5, id='', page=0):
+  def select(self, amount=5, id='', page=0, username=''):
     self.set_conection()
 
     if id:
@@ -59,6 +59,10 @@ class Userdb():
       SQL = "SELECT * FROM USERS ORDER BY ID DESC OFFSET %s ROWS FETCH NEXT %s ROWS ONLY"
       self.cursor.execute(SQL, (amount*page, amount))
       result = self.cursor.fetchall()
+    elif username:
+      SQL = "SELECT * FROM USERS WHERE USERNAME=%s"
+      self.cursor.execute(SQL, (username,))
+      result = self.cursor.fetchone()
     else:
       SQL = "SELECT * FROM USERS ORDER BY CDATE DESC, CTIME DESC LIMIT %s"
       self.cursor.execute(SQL, (amount,))

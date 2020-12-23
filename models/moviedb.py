@@ -48,7 +48,7 @@ class Moviedb():
     self.conn.commit()
     self.conn.close()
 
-  def select(self, amount=5, id='', page=0):
+  def select(self, amount=5, id='', page=0, random=False):
     self.set_conection()
 
     if id:
@@ -58,6 +58,10 @@ class Moviedb():
     elif page:
       SQL = "SELECT * FROM MOVIES ORDER BY CDATE DESC, CTIME DESC OFFSET %s ROWS FETCH NEXT %s ROWS ONLY"
       self.cursor.execute(SQL, (amount*page, amount))
+      result = self.cursor.fetchall()
+    elif random:
+      SQL = "SELECT	* FROM MOVIES WHERE ID != %s ORDER BY RANDOM() LIMIT %s"
+      self.cursor.execute(SQL, (random, amount))
       result = self.cursor.fetchall()
     else:
       SQL = "SELECT * FROM MOVIES ORDER BY CDATE DESC, CTIME DESC LIMIT %s"

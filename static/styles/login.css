@@ -1,4 +1,7 @@
 /*static/styles/login.css*/
+#main{
+  display: none;
+}
 #login{
   width: 400px;
   background: grey;

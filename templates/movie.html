@@ -1,0 +1,44 @@
+<!--templates/movie.html-->
+{% extends 'base.html' %}
+
+{% block head %}
+{{ super() }}
+<link href="/static/styles/movie.css" rel="stylesheet">
+<script src="/static/scripts/movie.js"></script>
+{% endblock %}
+
+{% block content %}
+<h3 class="post-title">{{ data['movie'][3] }} <span>{{ data['datetime'][0]  }}</span></h3>
+<div class="author">ចុះ​ផ្សាយ​ដោយៈ <a href="/user/{{ data['author'][0] }}">{{ data['movie'][8]}}</a>
+  {% if 'logged-in' in session %}
+  <span>
+    <a href="/dashboard/movie/edit/{{ data['movie'][0] }}"><img src="/static/images/edit.png" /> </a>
+    <a href="/dashboard/movie/delete/{{ data['movie'][0] }}"><img src="/static/images/delete.png" /></a>
+  </span>
+  {% endif %}
+</div>
+<div class="country">ក្នុង​ជំពូកៈ <a href="/movie/country/{{ data['movie'][4] }}">{{ data['movie'][4] }}</a></div>
+
+<div id="video-wrapper" style="width:100%;"></div>
+<script>movie.setVideo(`{{ data['movie'][1] }}`, `{{ data['movie'][2] }}`);</script> 
+
+<div id='random-movies'>
+  {% for v in range(data['movies']|length) %}
+  <div class="movie-wrapper">
+    <a href="/movie/{{ data['movies'][v][0] }}"><img src="{{ data['thumbs'][v] }}" /></a>
+    <a class="movie-title" href="/movie/{{ data['movies'][v][0] }}">{{ data['movies'][v][3] }}</a>
+  </div>
+  {% endfor %}
+</div>
+
+<div style="margin-top:20px;" id="disqus_thread"></div>
+<script>
+  (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://khmerweb.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+{% endblock %}
