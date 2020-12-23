@@ -1,0 +1,58 @@
+/*static/styles/dashboard/movie.css*/
+#main #content #movie-title{
+  width: 100%;
+  font: 16px/1.5 Oswald, Koulen;
+  padding:  5px 10px;
+}
+#content .ck-editor__editable {
+  min-height: 350px;
+}
+#content #bottombar{
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto;
+}
+#content #message{
+  text-align: center;
+}
+#content #bottombar input,
+#content #bottombar select{
+  font: 14px/1.5 Vidaloka, OdorMeanChey;
+  text-align: center;
+}
+#item-listing li{
+  padding: 10px;
+  margin-bottom: 10px;
+  display: grid;
+  grid-template-columns: 12% auto 25%;
+  grid-gap: 10px;
+  background: lavender;
+}
+#item-listing li:last-child{
+  margin-bottom: 0;
+}
+#item-listing li .thumbnail{
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  overflow: hidden;
+}
+#item-listing li .thumbnail img{
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#item-listing li .title a{
+  font: 16px/1.5 Oswald, Koulen;
+}
+#item-listing li .crud{
+  text-align: right;
+}
+#item-listing .crud img{
+  width: 35px;
+  margin-top: 10px;
+  visibility: hidden;
+}
+#item-listing li:hover > .crud img{
+  visibility: visible;
+}

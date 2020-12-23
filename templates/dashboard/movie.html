@@ -1,0 +1,91 @@
+<!--templates/dashboard/movie.html-->
+{% extends 'dashboard/index.html' %}
+  
+{% block head %}
+{{ super() }}
+<link href="/static/styles/dashboard/movie.css" rel="stylesheet">
+<script src="/static/scripts/dashboard/movie.js"></script>
+{% endblock %}
+
+{% block content %}
+  <form id='movie' action='/dashboard/movie/' method="POST" >
+    {% if 'movie' in data %}
+    <input id='movie-title' value="{{ data['movie'][3] }}" name="ftitle" type="text" placeholder="ចំណង​ជើងភាពយន្ត" required />
+    <textarea name="fcontent" id="editor" >{{ data['movie'][5] }}</textarea>
+    {% else: %}
+    <input id='movie-title' value="" name="ftitle" type="text" placeholder="ចំណង​ជើង​ភាពយន្ត" required />
+    <textarea name="fcontent" id="editor" ></textarea>
+    {% endif %}
+    <div id="bottombar">
+      <input id="submit" class="bottom-widget" type="submit" value="ចុះ​ផ្សាយ">
+      {% if 'movie' in data %}
+      <input type="text" value="{{ data['movie'][1] }}" class="bottom-widget" name="fvid" required />
+      <select id="type" class="bottom-widget" name="ftype">
+        <option>YouTube</option>
+        <option>Facebook</option>
+        <option>Dailymotion</option>
+        <option>Vimeo</option>
+        <option>OKRU</option>
+      </select>
+      <script>$("#type").val("{{data['movie'][2]}}").change();</script>
+      <select id="country" class="bottom-widget" name="fcountry" >
+        <option>World</option>
+        <option>Korean</option>
+        <option>Chinese</option>
+        <option>Thai</option>
+        <option>Khmer</option>
+      </select>
+      <script>$("#country").val("{{data['movie'][4]}}").change();</script>
+      <input id="movie-date" value="{{ data['datetime'][0] }}" class="bottom-widget " type="text" name="fdate" required />
+      <input id="movie-time" value="{{ data['datetime'][1] }}" class="bottom-widget " type="text" name="ftime" required />
+      {% else %}
+      <input type="text" value="" class="bottom-widget" placeholder="Video ID" name="fvid" required />
+      <select id="type" class="bottom-widget" name="ftype">
+        <option>YouTube</option>
+        <option>Facebook</option>
+        <option>Dailymotion</option>
+        <option>Vimeo</option>
+        <option>OKRU</option>
+      </select>
+      <select id="country" class="bottom-widget" name="fcountry" >
+        <option>World</option>
+        <option>Korean</option>
+        <option>Chinese</option>
+        <option>Thai</option>
+        <option>Khmer</option>
+      </select>
+      <input id="user-date" value="{{ data['datetime'][0] }}" class="bottom-widget user-date" type="text" name="fdate" required />
+      <input id="user-time" value="{{ data['datetime'][1] }}" class="bottom-widget user-time" type="text" name="ftime" required />
+      {% endif %}
+    </div>
+  </form>
+  <div id="message">{{ data['message'] }}</div>
+  <script src="/static/scripts/ckeditor/config.js"></script>
+{% endblock %}
+  
+{% block item_listing %}
+    <ul id="item-listing" class="item-listing region">
+      {% if 'movies' in data %}
+      {% for v in range(data['movies']|length) %}
+      <li class="movie">
+        <a class="thumbnail" href="/movie/{{ data['movies'][v][0] }}">
+          <img src="{{data['thumbs'][v]}}" />
+        </a>
+        <div class='title'>
+          <a href="/movie/{{ data['movies'][v][0] }}">{{ data['movies'][v][3] }}</a>
+          <div>{{ data['movies'][v][4] }}</div>
+          <span>{{ data['movies'][v][6].strftime('%d/%m/%Y') }}</span>
+        </div>
+        <div class="crud">
+          <div class="user">{{ data['movies'][v][8] }}</div>
+          <a href='/dashboard/movie/edit/{{ data["movies"][v][0] }}'><img src="/static/images/edit.png" /></a>
+          <a href='/dashboard/movie/delete/{{ data["movies"][v][0] }}'><img src="/static/images/delete.png" /></a>
+        </div>
+      </li>
+      {% endfor %}
+      {% endif %}
+    </ul>
+    <div id="load-more" class="load-more region">
+      <img onclick="movie.load_items('/dashboard/movie/load/', 'movies')" src="/static/images/load-more.png" />
+    </div>
+{% endblock %}

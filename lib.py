@@ -21,6 +21,8 @@ class Lib():
       if not image:
         if type == "user":
           new_tag = item_content.new_tag('img', src="/static/images/userthumb.png")
+        elif type == "movie":
+          new_tag = item_content.new_tag('img', src="/static/images/nomovie.jpg")
         else:
           new_tag = item_content.new_tag('img', src="/static/images/no-image.png")
 

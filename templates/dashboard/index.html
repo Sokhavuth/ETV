@@ -14,10 +14,11 @@
         <a href="/dashboard/">{{ data['site_title'] }}</a>
       </div>
       <form id="search">
-        <select id="search-option">
-          <option>ការផ្សាយ</option>
+        <select id="search-option" name="fsearch-option">
+          <option>ភាពយន្ត​ទោល</option>
+          <option>អ្នក​ប្រើប្រាស់</option>
         </select>
-        <input type="text" placeholder="Search" required />
+        <input type="text" placeholder="Search" name="fquery" required />
         <input type="submit" value="ស្វែងរក" />
       </form>
       <div class="logout">
@@ -31,6 +32,8 @@
   <div id="sidebar">
   {% block sidebar %}
     <div class="menu-item">
+      <a href="/dashboard/movie/"><img src="/static/images/movie.png" /></a>
+      <span><a href="/dashboard/movie/">ភាពយន្ត​ទោល</a></span>
       <a href="/dashboard/user/signup/"><img src="/static/images/user.png" /></a>
       <span><a href="/dashboard/user/signup/">អ្នក​ប្រើប្រាស់</a></span>
     </div>
