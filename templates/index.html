@@ -4,7 +4,9 @@
 {% block head %}
 {{ super() }}
 <link href="/static/styles/index.css" rel="stylesheet" >
+<link href="/static/styles/movie.css" rel="stylesheet" >
 <script src="/static/scripts/index.js"></script>
+<script src="/static/scripts/movie.js"></script>
 {% endblock %}
 
 {% block channel %}
@@ -35,5 +37,20 @@
 
   <a href="#"><img src="/static/images/horizontal-ad.png" /></a> 
   <a href="#"><img src="/static/images/horizontal-ad.png" /></a>
+</div>
+{% endblock %}
+
+{% block content %}
+
+<div id="video-wrapper" style="width:100%;"></div>
+<script>movie.setVideo(`{{ data['movies'][0][1] }}`, `{{ data['movies'][0][2] }}`);</script> 
+
+<div id='random-movies'>
+  {% for v in range(1, data['movies']|length) %}
+  <div class="movie-wrapper">
+    <a href="/movie/{{ data['movies'][v][0] }}"><img src="{{ data['thumbs'][v] }}" /></a>
+    <a class="movie-title" href="/movie/{{ data['movies'][v][0] }}">{{ data['movies'][v][3] }}</a>
+  </div>
+  {% endfor %}
 </div>
 {% endblock %}

@@ -1,4 +1,4 @@
-#models/userdb.py
+#models/moviedb.py
 import os, psycopg2
 
 class Moviedb():
@@ -48,7 +48,7 @@ class Moviedb():
     self.conn.commit()
     self.conn.close()
 
-  def select(self, amount=5, id='', page=0, random=False):
+  def select(self, amount=5, id='', page=0, random=False, type=None):
     self.set_conection()
 
     if id:
@@ -62,6 +62,10 @@ class Moviedb():
     elif random:
       SQL = "SELECT	* FROM MOVIES WHERE ID != %s ORDER BY RANDOM() LIMIT %s"
       self.cursor.execute(SQL, (random, amount))
+      result = self.cursor.fetchall()
+    elif type:
+      SQL = "SELECT * FROM MOVIES WHERE TYPE = %S ORDER BY CDATE DESC, CTIME DESC LIMIT %s"
+      self.cursor.execute(SQL, (type, amount))
       result = self.cursor.fetchall()
     else:
       SQL = "SELECT * FROM MOVIES ORDER BY CDATE DESC, CTIME DESC LIMIT %s"
