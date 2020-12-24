@@ -17,7 +17,7 @@
     <textarea name="fcontent" id="editor" ></textarea>
     {% endif %}
     <div id="bottombar">
-      <input id="submit" class="bottom-widget" type="submit" value="ចុះ​ឈ្មោះ">
+      <input id="submit" class="bottom-widget" type="submit" value="ចុះ​ឈ្មោះ" onclick="removeOnbeforeunload()" >
       {% if 'user' in data %}
       <input id="user-password" value="{{ data['user'][3] }}" class="bottom-widget" type="password" name="fpassword" />
       <select id="user-role" class="bottom-widget" name="frole" >

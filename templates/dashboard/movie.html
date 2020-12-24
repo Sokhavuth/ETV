@@ -17,7 +17,7 @@
     <textarea name="fcontent" id="editor" ></textarea>
     {% endif %}
     <div id="bottombar">
-      <input id="submit" class="bottom-widget" type="submit" value="ចុះ​ផ្សាយ">
+      <input id="submit" class="bottom-widget" type="submit" value="ចុះ​ផ្សាយ" onclick="removeOnbeforeunload()">
       {% if 'movie' in data %}
       <input type="text" value="{{ data['movie'][1] }}" class="bottom-widget" name="fvid" required />
       <select id="type" class="bottom-widget" name="ftype">
