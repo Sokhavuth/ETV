@@ -5,6 +5,7 @@ from flask_classful import FlaskView, route
 from controllers.login import Login
 from controllers.home import Home
 from controllers.movie import Movie
+from controllers.country import Country
  
 class Index(FlaskView):
   def __init__(self):
@@ -12,6 +13,7 @@ class Index(FlaskView):
     self.login = Login()
     self.home = Home()
     self.movie = Movie()
+    self.country = Country()
  
   @route('/')
   def index(self):
@@ -28,3 +30,11 @@ class Index(FlaskView):
   @route('/movie/<id>')
   def get_movie(self, id):
     return self.movie.get_movie(id)
+
+  @route('/movie/country/<label>')
+  def get_category(self, label):
+    return self.country.get_movie(label)
+
+  @route('/movie/country/load/')
+  def load_movie(self):
+    return self.country.load_movie()

@@ -14,7 +14,7 @@ class Movie():
     vdict = copy.deepcopy(config.vdict)
     vdict['site_title'] = '​ភាពយន្ត​ទោល'
 
-    vdict['movies'] = self.moviedb.select(vdict['random_max_post'], random=id)
+    vdict['movies'] = self.moviedb.select(vdict['random_max_movie'], random=id)
     vdict['thumbs'] = self.lib.get_thumbs(vdict['movies'], 5, type='movie')
     vdict['movie'] = self.moviedb.select(id=id)
     date = (vdict['movie'][6]).strftime('%d/%m/%Y')

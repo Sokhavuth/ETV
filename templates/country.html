@@ -1,0 +1,24 @@
+<!--templates/movie.html-->
+{% extends 'base.html' %}
+
+{% block head %}
+{{ super() }}
+<link href="/static/styles/country.css" rel="stylesheet">
+<script src="/static/scripts/country.js"></script>
+{% endblock %}
+
+{% block content %}
+<div class="country">​<a href="/movie/country/{{ data['movies'][0][4] }}">{{ data['movies'][0][4] }}</a></div>
+
+<div id='country-movies'>
+  {% for v in range(data['movies']|length) %}
+  <div class="movie-wrapper">
+    <a href="/movie/{{ data['movies'][v][0] }}"><img src="{{ data['thumbs'][v] }}" /></a>
+    <a class="movie-title" href="/movie/{{ data['movies'][v][0] }}">{{ data['movies'][v][3] }}</a>
+  </div>
+  {% endfor %}
+</div>
+<div id="load-more" class="load-more region">
+  <img onclick="country.load_items('/movie/country/load/')" src="/static/images/arrow.png" />
+</div>
+{% endblock %}
