@@ -8,8 +8,11 @@
 {% endblock %}
 
 {% block content %}
+{% if session['label']=="all" %}
+<div class="country">​<a href="/movie/country/all">ភាពយន្ត​គ្រប់​ប្រភេទ</a></div>
+{% else %}
 <div class="country">​<a href="/movie/country/{{ data['movies'][0][4] }}">{{ data['movies'][0][4] }}</a></div>
-
+{% endif %}
 <div id='country-movies'>
   {% for v in range(data['movies']|length) %}
   <div class="movie-wrapper">

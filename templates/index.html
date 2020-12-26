@@ -45,6 +45,18 @@
 <div id="video-wrapper" style="width:100%;"></div>
 <script>movie.setVideo(`{{ data['movies'][0][1] }}`, `{{ data['movies'][0][2] }}`);</script> 
 
+<div class="topnav " id="movie-menu">
+  <a href="/movie/country/all">គ្រប់​ប្រភេទ</a>
+  <a href="/movie/country/ភាពយន្ត​អន្តរជាតិ">ភាពយន្ត​អន្តរជាតិ</a>
+  <a href="/movie/country/ភាពយន្ត​កូរ៉េ">ភាពយន្ត​កូរ៉េ</a>
+  <a href="/movie/country/ភាពយន្តចិន">ភាពយន្ត​ចិន</a>
+  <a href="/movie/country/ភាពយន្ត​ថៃ">ភាពយន្ត​ថៃ</a>
+  <a href="/movie/country/ភាពយន្ត​ខ្មែរ">ភាពយន្ត​ខ្មែរ</a>
+  <a href="javascript:void(0);" class="icon" onclick="mobileMenu('movie-menu')">
+    <i class="fa fa-bars"></i>
+  </a>
+</div>
+
 <div id='random-movies'>
   {% for v in range(1, data['movies']|length) %}
   <div class="movie-wrapper">

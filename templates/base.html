@@ -31,7 +31,7 @@
           <a href="#">កីឡា</a>
           <a href="#">រឿងភាគ</a>
           <a href="/login/">ចូល​ក្នុង</a>
-          <a href="javascript:void(0);" class="icon" onclick="mobileMenu()">
+          <a href="javascript:void(0);" class="icon" onclick="mobileMenu('myTopnav')">
             <i class="fa fa-bars"></i>
           </a>
         </div>
@@ -41,8 +41,8 @@
         </form>
       </div>
       <script>
-        function mobileMenu() {
-          var x = document.getElementById("myTopnav");
+        function mobileMenu(id) {
+          var x = document.getElementById(id);
           if (x.className === "topnav") {
             x.className += " responsive";
           } else {

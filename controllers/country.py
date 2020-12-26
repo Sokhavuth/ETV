@@ -34,5 +34,3 @@ class Country():
 
     vdict['movies'] = new_list
     return vdict
-    
-

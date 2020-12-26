@@ -54,7 +54,9 @@ body{
   background-color: #333;
   overflow: hidden;
 }
-
+#movie-menu{
+  background: black;
+}
 /* Style the links inside the navigation bar */
 .topnav a {
   float: left;
@@ -63,7 +65,9 @@ body{
   padding: 14px 16px;
   font: 16px/1.5 Oswald, Bayon;
 }
-
+#movie-menu a{
+  font: 16px/1.75 Vidaloka, OdorMeanChey;
+}
 /* Add an active class to highlight the current page */
 .topnav a.active {
   color: orangered;

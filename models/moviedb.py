@@ -56,7 +56,11 @@ class Moviedb():
       self.cursor.execute(SQL, (id,))
       result = self.cursor.fetchone()
     elif page and label:
-      SQL = "SELECT * FROM MOVIES WHERE COUNTRY = '"+label+"' ORDER BY CDATE DESC, CTIME DESC OFFSET %s ROWS FETCH NEXT %s ROWS ONLY"
+      if label == "all":
+        SQL = "SELECT * FROM MOVIES ORDER BY CDATE DESC, CTIME DESC OFFSET %s ROWS FETCH NEXT %s ROWS ONLY"
+      else:
+        SQL = "SELECT * FROM MOVIES WHERE COUNTRY = '"+label+"' ORDER BY CDATE DESC, CTIME DESC OFFSET %s ROWS FETCH NEXT %s ROWS ONLY"
+
       self.cursor.execute(SQL, (amount*page, amount))
       result = self.cursor.fetchall()
     elif page:
@@ -72,7 +76,11 @@ class Moviedb():
       self.cursor.execute(SQL, (type, amount))
       result = self.cursor.fetchall()
     elif label:
-      SQL = "SELECT * FROM MOVIES WHERE COUNTRY = '"+label+"' ORDER BY CDATE DESC, CTIME DESC LIMIT %s"
+      if label == 'all':
+        SQL = "SELECT * FROM MOVIES ORDER BY CDATE DESC, CTIME DESC LIMIT %s"
+      else:
+        SQL = "SELECT * FROM MOVIES WHERE COUNTRY = '"+label+"' ORDER BY CDATE DESC, CTIME DESC LIMIT %s"
+
       self.cursor.execute(SQL, (amount,))
       result = self.cursor.fetchall()
     else:
