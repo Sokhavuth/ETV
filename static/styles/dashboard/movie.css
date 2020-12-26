@@ -45,6 +45,9 @@
 #item-listing li .title a{
   font: 16px/1.5 Oswald, Koulen;
 }
+#item-listing li .title div a{
+  font: 12px/1.5 Vidaloka, OdorMeanChey;
+}
 #item-listing li .crud{
   text-align: right;
 }
