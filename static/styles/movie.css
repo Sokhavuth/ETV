@@ -30,7 +30,7 @@
 }
 #content #random-movies{
   display: grid;
-  grid-template-columns: calc(50% - 5px) calc(50% - 2px);
+  grid-template-columns: calc(50% - 5px) calc(50% - 5px);
   grid-gap: 10px;
   margin-top: 10px;
 }
