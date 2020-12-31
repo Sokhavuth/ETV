@@ -67,7 +67,7 @@
   </div>
   {% endfor %}
 </div>
-
+{% if data['series']|length %}
 <div id="series-wrapper" style="width:100%;margin-top:50px;"></div>
 <script>
   $(document).ready(function(){
@@ -98,4 +98,5 @@
   </div>
   {% endfor %}
 </div>
+{% endif %}
 {% endblock %}
