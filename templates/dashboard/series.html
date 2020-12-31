@@ -1,0 +1,123 @@
+<!--templates/dashboard/series.html-->
+{% extends 'dashboard/index.html' %}
+  
+{% block head %}
+{{ super() }}
+<link href="/static/styles/dashboard/series.css" rel="stylesheet">
+<script src="/static/scripts/dashboard/series.js"></script>
+{% endblock %}
+
+{% block content %}
+  <form id='series' action='/dashboard/series/' method="POST" >
+    {% if 'serie' in data %}
+    <input id='series-title' value="{{ data['serie'][2] }}" name="ftitle" type="text" placeholder="ចំណង​ជើងភាពយន្ត" required />
+    <textarea id="editor" name="fcontent">{{ data['serie'][4] }}</textarea>
+    <section id="data-header">
+      <div>ភាគ</div><div>ប្រភេទ​វីដេអូ</div><div>អត្តសញ្ញាណ​វីដេអូ</div>
+    </section>
+    <script>
+      $(document).ready(function(){
+        series.setPlaylist('{{ data["serie"][1]|safe }}');
+      });
+    </script>
+    <section id="data-entry">
+      <input id="create-playlist" class="bottom-widget" type="button" value="Insert​" onclick="series.generatePlaylist()">
+      <select id="vid-type"> 
+        <option>YouTube</option>
+        <option>Facebook</option>
+        <option>Dailymotion</option>
+        <option>Vimeo</option>
+        <option>OKRU</option>
+        <option>YouTubePl</option>
+      </select>
+      <input id="vid-id" type="text" /> 
+      <input type="hidden" id="playlist" name="fplaylist" value='{{ data["serie"][1]|safe }}'>
+      <input type="hidden" name="fedit-id" value='{{ data["edit-id"] }}'>
+    </section>
+    {% else: %}
+    <input id='series-title' value="" name="ftitle" type="text" placeholder="ចំណង​ជើង​ភាពយន្ត" required />
+    <textarea id="editor" name="fcontent"></textarea>
+    <section id="data-header">
+      <div>ភាគ</div><div>ប្រភេទ​វីដេអូ</div><div>អត្តសញ្ញាណ​វីដេអូ</div>
+    </section>
+    <section id="data-entry">
+      <input id="create-playlist" class="bottom-widget" type="button" value="Insert​" onclick="series.generatePlaylist()">
+      <select id="vid-type"> 
+        <option>YouTube</option>
+        <option>Facebook</option>
+        <option>Dailymotion</option>
+        <option>Vimeo</option>
+        <option>OKRU</option>
+        <option>YouTubePl</option>
+      </select>
+      <input id="vid-id" type="text" /> 
+      <input type="hidden" id="playlist" name="fplaylist" value="[]">
+      <input type="hidden" name="fedit-id" value=''>
+    </section>
+    {% endif %}
+    <div id="bottombar">
+      <input id="submit" class="bottom-widget" type="submit" value="ចុះ​ផ្សាយ" onclick="removeOnbeforeunload()">
+      {% if 'serie' in data %}
+      <select id="country" class="bottom-widget" name="fcountry" >
+        <option>ភាពយន្ត​អន្តរជាតិ</option>
+        <option>ភាពយន្ត​កូរ៉េ</option>
+        <option>ភាពយន្ត​ចិន</option>
+        <option>ភាពយន្ត​ថៃ</option>
+        <option>ភាពយន្ត​ខ្មែរ</option>
+      </select>
+      <script>$("#country").val("{{data['serie'][3]}}").change();</script>
+      <select id="end" class="bottom-widget" name="fend">
+        <option>ចប់​ហើយ</option>
+        <option>អត់​ចប់</option>
+      </select>
+      <script>$("#end").val("{{data['serie'][8]}}").change();</script>
+      <input id="series-date" value="{{ data['datetime'][0] }}" class="bottom-widget " type="text" name="fdate" required />
+      <input id="series-time" value="{{ data['datetime'][1] }}" class="bottom-widget " type="text" name="ftime" required />
+      {% else %}
+      <select id="country" class="bottom-widget" name="fcountry" >
+        <option>ភាពយន្ត​អន្តរជាតិ</option>
+        <option>ភាពយន្ត​កូរ៉េ</option>
+        <option>ភាពយន្តចិន</option>
+        <option>ភាពយន្ត​ថៃ</option>
+        <option>ភាពយន្ត​ខ្មែរ</option>
+      </select>
+      <select id="end" class="bottom-widget" name="fend">
+        <option>ចប់​ហើយ</option>
+        <option>អត់​ចប់</option>
+      </select>
+      <input id="series-date" value="{{ data['datetime'][0] }}" class="bottom-widget user-date" type="text" name="fdate" required />
+      <input id="series-time" value="{{ data['datetime'][1] }}" class="bottom-widget user-time" type="text" name="ftime" required />
+      {% endif %}
+      <input id="submit-sheet" class="bottom-widget" type="button" value="បញ្ចូលទិន្នន័យ" onclick="series.getPlaylist()">
+    </div>
+  </form>
+  <div id="message">{{ data['message'] }}</div>
+  <script src="/static/scripts/ckeditor/config.js"></script>
+{% endblock %}
+  
+{% block item_listing %}
+    <ul id="item-listing" class="item-listing region">
+      {% if 'series' in data %}
+      {% for v in range(data['series']|length) %}
+      <li class="series">
+        <a class="thumbnail" href="/series/{{ data['series'][v][0] }}">
+          <img src="{{data['thumbs'][v]}}" />
+        </a>
+        <div class='title'>
+          <a href="/series/{{ data['series'][v][0] }}">{{ data['series'][v][2] }}</a>
+          <div><a href="/series/country/{{ data['series'][v][3] }}">{{ data['series'][v][3] }}</a></div>
+          <span>{{ data['series'][v][5].strftime('%d/%m/%Y') }}</span>
+        </div>
+        <div class="crud">
+          <div class="user">{{ data['series'][v][7] }}</div>
+          <a href='/dashboard/series/edit/{{ data["series"][v][0] }}'><img src="/static/images/edit.png" /></a>
+          <a href='/dashboard/series/delete/{{ data["series"][v][0] }}'><img src="/static/images/delete.png" /></a>
+        </div>
+      </li>
+      {% endfor %}
+      {% endif %}
+    </ul>
+    <div id="load-more" class="load-more region">
+      <img onclick="series.load_items('/dashboard/series/load/')" src="/static/images/load-more.png" />
+    </div>
+{% endblock %}

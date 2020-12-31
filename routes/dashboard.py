@@ -3,6 +3,7 @@ from flask_classful import FlaskView, route
 from controllers.dashboard.user import User
 from controllers.dashboard.index import Index
 from controllers.dashboard.movie import Movie
+from controllers.dashboard.series import Series
 
 class Dashboard(FlaskView):
   def __init__(self):
@@ -10,6 +11,7 @@ class Dashboard(FlaskView):
     self.user = User()
     self.index = Index()
     self.movie = Movie()
+    self.series = Series()
 
   @route('/')
   def dashboard_index(self):
@@ -50,3 +52,19 @@ class Dashboard(FlaskView):
   @route('/movie/load/')
   def dashboard_movie_load(self):
     return self.movie.load()
+
+  @route('/series/', methods=['GET', 'POST'])
+  def dashborad_series(self):
+    return self.series.get_post()
+
+  @route('/series/delete/<id>')
+  def dashboard_series_delete(self, id):
+    return self.series.delete(id)
+
+  @route('/series/edit/<id>')
+  def dashboard_series_edit(self, id):
+    return self.series.edit(id)
+
+  @route('/series/load/')
+  def dashboard_series_load(self):
+    return self.series.load()

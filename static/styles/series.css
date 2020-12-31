@@ -1,0 +1,90 @@
+/*static/styles/series.css*/
+#content{
+  padding: 20px;
+}
+#content .post-title{
+  font: 22px/1.5 Oswald, Koulen;
+}
+#content .post-title span, #content .author span{
+  float: right;
+}
+#content .author{
+  margin-top: 20px;
+}
+#content .author img{
+  width: 30px;
+  margin-left: 5px;
+}
+#content .country{
+  margin-top: 5px;
+}
+#content #series-wrapper{
+  margin-top: 30px;
+}
+#content #series-player{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+#content #episodes{
+  background: black;
+  max-height: 365px;
+  overflow: auto;
+}
+#content #episodes .episode-outer{
+  display: grid;
+  grid-template-columns: 150px auto;
+  align-items: center;
+  padding: 2px;
+  padding-right: 30px;
+  border-top: 2px solid rgb(73, 73, 73);
+  font: 20px/1.5 Limonf3;
+}
+#content #episodes .episode-outer img{
+  width: 150px;
+  float: left;
+}
+#content #episodes .episode{
+  text-align: right;
+}
+#content #episodes .episode-outer img:hover,
+#content #episodes .episode a:hover{
+  cursor: pointer;
+}
+.active{
+  background: rgb(36, 36, 36)
+}
+#content #random-series{
+  display: grid;
+  grid-template-columns: calc(50% - 5px) calc(50% - 5px);
+  grid-gap: 10px;
+  margin-top: 10px;
+}
+#content #random-series a,
+#content #random-series img{
+  width: 100%;
+}
+#content #random-series img{
+  float: left;
+}
+#content #random-series .series-wrapper{
+  position: relative;
+  text-align: center;
+}
+#content #random-series .series-title{
+  display: block;
+  position: absolute;
+  bottom: 0;
+  padding: 10px 0;
+  font: 18px/1.5 Courgette, HandWriting;
+  text-shadow: 2px 2px 5px black;
+  background-image: linear-gradient(to top, black, transparent);
+}
+
+@media only screen and (max-width: 600px){
+  #content #random-series{
+    grid-template-columns: 100%;
+  }
+}

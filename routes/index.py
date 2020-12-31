@@ -6,6 +6,7 @@ from controllers.login import Login
 from controllers.home import Home
 from controllers.movie import Movie
 from controllers.country import Country
+from controllers.series import Series
  
 class Index(FlaskView):
   def __init__(self):
@@ -14,6 +15,7 @@ class Index(FlaskView):
     self.home = Home()
     self.movie = Movie()
     self.country = Country()
+    self.series = Series()
  
   @route('/')
   def index(self):
@@ -38,3 +40,7 @@ class Index(FlaskView):
   @route('/movie/country/load/')
   def load_movie(self):
     return self.country.load_movie()
+
+  @route('/series/<id>')
+  def get_series(self, id):
+    return self.series.get_series(id)

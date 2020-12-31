@@ -26,7 +26,7 @@
       </div>
     </div>
   </nav>
-  {% if 'edit-id' in session %}
+  {% if data['edit-id'] %}
   <script>
   window.onbeforeunload = function() {
     return "Are you sure you want to leave this page?";
@@ -45,6 +45,8 @@
     <div class="menu-item">
       <a href="/dashboard/movie/"><img src="/static/images/movie.png" /></a>
       <span><a href="/dashboard/movie/">ភាពយន្ត​ទោល</a></span>
+      <a href="/dashboard/series/"><img src="/static/images/series.png" /></a>
+      <span><a href="/dashboard/series/">ភាពយន្ត​ភាគ</a></span>
       <a href="/dashboard/user/signup/"><img src="/static/images/user.png" /></a>
       <span><a href="/dashboard/user/signup/">អ្នក​ប្រើប្រាស់</a></span>
     </div>

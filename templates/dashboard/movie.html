@@ -12,9 +12,11 @@
     {% if 'movie' in data %}
     <input id='movie-title' value="{{ data['movie'][3] }}" name="ftitle" type="text" placeholder="ចំណង​ជើងភាពយន្ត" required />
     <textarea name="fcontent" id="editor" >{{ data['movie'][5] }}</textarea>
+    <input type="hidden" name="fedit-id" value='{{ data["edit-id"] }}'>
     {% else: %}
     <input id='movie-title' value="" name="ftitle" type="text" placeholder="ចំណង​ជើង​ភាពយន្ត" required />
     <textarea name="fcontent" id="editor" ></textarea>
+    <input type="hidden" name="fedit-id" value=''>
     {% endif %}
     <div id="bottombar">
       <input id="submit" class="bottom-widget" type="submit" value="ចុះ​ផ្សាយ" onclick="removeOnbeforeunload()">

@@ -22,12 +22,13 @@ class User():
       date = request.form['fdate']
       time = request.form['ftime']
       email = request.form['femail']
+      edit_id = request.form['fedit-id']
 
       if not email:
         vdict['message'] = 'ចាំបាច់​ត្រូវ​មាន​ E-MAIL!'
         return render_template('dashboard/user.html', data=vdict)
 
-      if (self.userdb.check_email(email)) and (not ('edit-id' in session)):
+      if (self.userdb.check_email(email)) and (not edit_id):
         vdict['message'] = 'E-MAIL នេះ​ត្រូវ​បាន​គេ​យក​ទៅ​ប្រើប្រាស់​ហើយ។'
         return render_template('dashboard/user.html', data=vdict)
 
@@ -50,11 +51,9 @@ class User():
         vdict['message'] = 'ទំរង់​ពេល​វេលា​មិន​ត្រឹមត្រូវ!'
         return render_template('dashboard/user.html', data=vdict)
 
-      if 'edit-id' in session:
+      if edit_id:
         if author_role[4] == 'Admin':
-          id = session['edit-id']
-          self.userdb.update(username, email, password, role, content, date, time, author, id)
-          session.pop('edit-id', None)
+          self.userdb.update(username, email, password, role, content, date, time, author, edit_id)
       else:
         if author_role[4] == 'Admin':
           self.userdb.insert(username, email, password, role, content, date, time, author)
@@ -73,7 +72,7 @@ class User():
   def edit(self, id):
     vdict = copy.deepcopy(config.vdict)
     vdict['blog_title'] = 'កែតំរូវ​អ្នក​ប្រើប្រាស់'
-    session['edit-id'] = id
+    vdict['edit-id'] = id
 
     if 'logged-in' in session:
       vdict['users'] = self.userdb.select(vdict['dashboard_max_post'])

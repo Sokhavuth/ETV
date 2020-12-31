@@ -1,12 +1,10 @@
 #controllers/dashboard/movie.py
 import config, copy, lib, datetime, uuid
 from flask import render_template, session, request, redirect
-from models.userdb import Userdb
 from models.moviedb import Moviedb
 
 class Movie():
   def __init__(self):
-    self.userdb = Userdb()
     self.lib = lib.Lib()
     self.moviedb = Moviedb()
 
@@ -24,6 +22,7 @@ class Movie():
       country = request.form['fcountry']
       date = request.form['fdate']
       time = request.form['ftime']
+      edit_id = request.form['fedit-id']
       author = session['logged-in']
 
       try:
@@ -38,10 +37,8 @@ class Movie():
         vdict['message'] = 'ទំរង់​ពេល​វេលា​មិន​ត្រឹមត្រូវ!'
         return render_template('dashboard/movie.html', data=vdict)
 
-      if 'edit-id' in session:
-        id = session['edit-id']
-        self.moviedb.update(vid, type, title, country, content, date, time, author, id)
-        session.pop('edit-id', None)
+      if edit_id:
+        self.moviedb.update(vid, type, title, country, content, date, time, author, edit_id)
       else:
         id = str(uuid.uuid4().int)
         self.moviedb.insert(id, vid, type, title, country, content, date, time, author)
@@ -60,7 +57,7 @@ class Movie():
   def edit(self, id):
     vdict = copy.deepcopy(config.vdict)
     vdict['site_title'] = 'កែតំរូវ​ភាពយន្ត​ទោល'
-    session['edit-id'] = id
+    vdict['edit-id'] = id
 
     if 'logged-in' in session:
       vdict['movies'] = self.moviedb.select(vdict['dashboard_max_post'])

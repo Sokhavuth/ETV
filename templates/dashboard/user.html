@@ -12,9 +12,11 @@
     {% if 'user' in data %}
     <input id='user-title' value="{{ data['user'][1] }}" name="fusername" type="text" placeholder="ឈ្មោះ​អ្នក​ប្រើប្រាស់" required />
     <textarea name="fcontent" id="editor" >{{ data['user'][5] }}</textarea>
+    <input type="hidden" name="fedit-id" value='{{ data["edit-id"] }}'>
     {% else: %}
     <input id='user-title' value="" name="fusername" type="text" placeholder="ឈ្មោះ​អ្នក​ប្រើប្រាស់" required />
     <textarea name="fcontent" id="editor" ></textarea>
+    <input type="hidden" name="fedit-id" value=''>
     {% endif %}
     <div id="bottombar">
       <input id="submit" class="bottom-widget" type="submit" value="ចុះ​ឈ្មោះ" onclick="removeOnbeforeunload()" >

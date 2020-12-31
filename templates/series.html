@@ -1,0 +1,63 @@
+<!--templates/series.html-->
+{% extends 'base.html' %}
+
+{% block head %}
+{{ super() }}
+<link href="/static/styles/series.css" rel="stylesheet">
+<script src="/static/scripts/series.js"></script>
+{% endblock %}
+
+{% block content %}
+<h3 class="post-title">{{ data['serie'][2] }} <span>{{ data['datetime'][0]  }}</span></h3>
+<div class="author">ចុះ​ផ្សាយ​ដោយៈ <a href="/user/{{ data['author'][0] }}">{{ data['serie'][7]}}</a>
+  {% if 'logged-in' in session %}
+  <span>
+    <a href="/dashboard/series/edit/{{ data['serie'][0] }}"><img src="/static/images/edit.png" /> </a>
+    <a href="/dashboard/series/delete/{{ data['serie'][0] }}"><img src="/static/images/delete.png" /></a>
+  </span>
+  {% endif %}
+</div>
+<div class="country">ក្នុង​ជំពូកៈ <a href="/series/country/{{ data['serie'][3] }}">{{ data['serie'][3] }}</a></div>
+
+<div id="series-wrapper" style="width:100%;"></div>
+<script>
+  $(document).ready(function(){
+    series.setVideo(`{{ data['serie'][1]|safe }}`);
+    series.setEpisodes('{{ data["serie"][1]|safe }}', '{{ data["serie"][8]|safe }}');
+  });
+</script> 
+
+<div class="topnav " id="series-menu">
+  <a href="/series/country/all">គ្រប់​ប្រភេទ</a>
+  <a href="/series/country/ភាពយន្ត​អន្តរជាតិ">ភាពយន្ត​អន្តរជាតិ</a>
+  <a href="/series/country/ភាពយន្ត​កូរ៉េ">ភាពយន្ត​កូរ៉េ</a>
+  <a href="/series/country/ភាពយន្តចិន">ភាពយន្ត​ចិន</a>
+  <a href="/series/country/ភាពយន្ត​ថៃ">ភាពយន្ត​ថៃ</a>
+  <a href="/series/country/ភាពយន្ត​ខ្មែរ">ភាពយន្ត​ខ្មែរ</a>
+  <a href="javascript:void(0);" class="icon" onclick="mobileMenu('series-menu')">
+    <i class="fa fa-bars"></i>
+  </a>
+</div>
+
+<div id="episodes"></div>
+
+<div id='random-series'>
+  {% for v in range(data['series']|length) %}
+  <div class="series-wrapper">
+    <a href="/series/{{ data['series'][v][0] }}"><img src="{{ data['thumbs'][v] }}" /></a>
+    <a class="series-title" href="/series/{{ data['series'][v][0] }}">{{ data['series'][v][2] }}</a>
+  </div>
+  {% endfor %}
+</div>
+
+<div style="margin-top:20px;" id="disqus_thread"></div>
+<script>
+  (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://khmerweb.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+{% endblock %}

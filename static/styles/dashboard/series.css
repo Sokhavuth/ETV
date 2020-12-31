@@ -1,0 +1,94 @@
+/*static/styles/dashboard/series.css*/
+#main #content, #main #sidebar{
+  min-height: auto;
+}
+#main #content #series-title{
+  width: 100%;
+  font: 16px/1.5 Oswald, Koulen;
+  padding:  5px 10px;
+}
+#content .ck-editor__editable {
+  min-height: 300px;
+}
+#content #data-header{
+  display: grid;
+  grid-template-columns: 10% 45% 45%;
+  text-align: center;
+}
+#content #data-header input{
+  text-align: center;
+}
+#content #data-header div,
+#content #data-header a{
+  padding: 5px;
+  border: 1px solid grey;
+  text-align: center;
+}
+#content #data-header a:hover{
+  cursor: pointer;
+}
+#content #data-entry{
+  display: grid;
+  grid-template-columns: 10% 45% 45%;
+}
+#content #data-entry input,
+#content #data-entry select{
+  padding: 5px;
+}
+#content #bottombar{
+  display: grid;
+  grid-template-columns: 10% auto auto auto auto auto;
+}
+#content #message{
+  text-align: center;
+}
+#content #bottombar input,
+#content #bottombar select{
+  font: 14px/1.5 Vidaloka, OdorMeanChey;
+  text-align: center;
+}
+#content #vidtype{
+  width: 100%;
+  min-height: 200px;
+  padding: 10px;
+}
+#item-listing li{
+  padding: 10px;
+  margin-bottom: 10px;
+  display: grid;
+  grid-template-columns: 12% auto 25%;
+  grid-gap: 10px;
+  background: lavender;
+}
+#item-listing li:last-child{
+  margin-bottom: 0;
+}
+#item-listing li .thumbnail{
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  overflow: hidden;
+}
+#item-listing li .thumbnail img{
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#item-listing li .title a{
+  font: 16px/1.5 Oswald, Koulen;
+}
+#item-listing li .title div a{
+  font: 12px/1.5 Vidaloka, OdorMeanChey;
+}
+#item-listing li .crud{
+  text-align: right;
+}
+#item-listing .crud img{
+  width: 35px;
+  margin-top: 10px;
+  visibility: hidden;
+}
+#item-listing li:hover > .crud img{
+  visibility: visible;
+}
