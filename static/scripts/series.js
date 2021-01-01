@@ -38,6 +38,7 @@ class Series{
     }
 
     $('#series-wrapper').html(iframe);
+    FB.XFBML.parse();
   }
 
   setEpisodes(playlist, ending){
