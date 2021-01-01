@@ -1,0 +1,47 @@
+/*static/styles/country_series.css*/
+#content{
+  padding: 20px;
+}
+#content .country-series a{
+  font: italic 24px/1.5 Oswald, Limonf3;
+}
+#content #country-series{
+  display: grid;
+  grid-template-columns: calc(50% - 5px) calc(50% - 5px);
+  grid-gap: 10px;
+  margin-top: 20px;
+}
+#content #country-series a,
+#content #country-series img{
+  width: 100%;
+}
+#content #country-series img{
+  float: left;
+}
+#content #country-series .series-wrapper{
+  position: relative;
+  text-align: center;
+}
+#content #country-series .series-title{
+  display: block;
+  position: absolute;
+  bottom: 0;
+  padding: 10px 0;
+  font: 18px/1.5 Courgette, HandWriting;
+  text-shadow: 2px 2px 5px black;
+  background-image: linear-gradient(to top, black, transparent);
+}
+#content #load-more{
+  text-align: center;
+  padding: 30px 0 0;
+}
+#content #load-more img:hover{
+  opacity: .5;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 600px){
+  #content #country-series{
+    grid-template-columns: 100%;
+  }
+}

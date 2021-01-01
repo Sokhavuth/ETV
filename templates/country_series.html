@@ -1,0 +1,27 @@
+<!--templates/country_series.html-->
+{% extends 'base.html' %}
+
+{% block head %}
+{{ super() }}
+<link href="/static/styles/country_series.css" rel="stylesheet">
+<script src="/static/scripts/country_series.js"></script>
+{% endblock %}
+
+{% block content %}
+{% if session['label']=="all" %}
+<div class="country-series">​<a href="/series/country/all">ភាពយន្ត​គ្រប់​ប្រភេទ</a></div>
+{% else %}
+<div class="country-series">​<a href="/series/country/{{ data['series'][0][3] }}">{{ data['series'][0][3] }}</a></div>
+{% endif %}
+<div id='country-series'>
+  {% for v in range(data['series']|length) %}
+  <div class="series-wrapper">
+    <a href="/series/{{ data['series'][v][0] }}"><img src="{{ data['thumbs'][v] }}" /></a>
+    <a class="series-title" href="/series/{{ data['series'][v][0] }}">{{ data['series'][v][2] }}</a>
+  </div>
+  {% endfor %}
+</div>
+<div id="load-more" class="load-more region">
+  <img onclick="country_series.load_items('/series/country/load/')" src="/static/images/arrow.png" />
+</div>
+{% endblock %}
