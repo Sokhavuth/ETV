@@ -61,3 +61,66 @@
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 {% endblock %}
+
+{% block sidebar %}
+<style>
+  .img-outer{
+    width:100%;
+  }
+  .img-outer img{
+    width: 100%;
+  }
+  .img-outer img:hover{
+    opacity:.7;
+  }
+  .img-outer div{
+    position:relative;
+    margin-bottom:10px;
+  }
+  .img-outer div:last-child{
+    margin: 0;
+  }
+  .img-outer .star-name{
+    display: block;
+    position: absolute;
+    top: 5px;
+    right:5px;
+    color: red;
+    font: 14px/1.5 Oswald;
+  }
+  </style>
+  
+  <div class="img-outer">
+  </div>
+  
+  <script>
+  
+  var starUrl = "https://script.google.com/macros/s/AKfycbzifjjj43uwlbd2IxkovhnUrz5nq17Xq9L5FAZkU40HpXzKa5M/exec?start=1325437200&end=1325439000&callback=setPicture&v=7";
+  
+  $.getScript(starUrl);
+  
+  function setThumb(postContent){
+    var div = document.createElement( 'div' );
+    div.innerHTML = postContent;
+    var img = div.getElementsByTagName("img");
+    
+    if(img.length>=1) {
+      return img[0].src;
+    }
+    else{
+      return ("http://2.bp.blogspot.com/-5rrONZZDn8w/VK1uxQputqI/AAAAAAAAlWU/zUoYGbajcTw/s1600/picture.jpg");
+    }  
+  }
+  
+  function setPicture(postList){
+  
+    for(var i =0; i<postList.length; i++){
+      var postContent = postList[i].content.text;
+      var thumb = setThumb(postContent);
+      var postTitle = postList[i].title.text;
+      $(".img-outer").append('<div><a><img src="'+thumb+'" /></a><a class="star-name">'+postTitle+'</a></div>');
+    }
+  }
+    
+  </script>
+{% endblock %}
