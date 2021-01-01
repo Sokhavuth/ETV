@@ -98,6 +98,7 @@
 {% block item_listing %}
     <ul id="item-listing" class="item-listing region">
       {% if 'series' in data %}
+      <li style="display:block;text-align:center;">ចំនួនភាពយន្ត​សរុបៈ {{data['count']}}</li>
       {% for v in range(data['series']|length) %}
       <li class="series">
         <a class="thumbnail" href="/series/{{ data['series'][v][0] }}">

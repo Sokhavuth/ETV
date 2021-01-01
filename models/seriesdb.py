@@ -109,6 +109,16 @@ class Seriesdb():
     self.conn.commit()
     self.conn.close()
 
+  def count(self):
+    self.set_conection()
+
+    sql = "SELECT COUNT(*) FROM SERIES"
+    self.cursor.execute(sql)
+    result = self.cursor.fetchone()
+
+    self.conn.close()
+    return result[0]
+
   def search(self, query):
     self.set_conection()
   

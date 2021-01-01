@@ -44,11 +44,13 @@ class Movie():
         self.moviedb.insert(id, vid, type, title, country, content, date, time, author)
 
       vdict['movies'] = self.moviedb.select(vdict['dashboard_max_post'])
+      vdict['count'] = self.moviedb.count()
       vdict['thumbs'] = self.lib.get_thumbs(vdict['movies'], 5, type='movie')
       return render_template('dashboard/movie.html', data=vdict)
 
     elif 'logged-in' in session:
       vdict['movies'] = self.moviedb.select(vdict['dashboard_max_post'])
+      vdict['count'] = self.moviedb.count()
       vdict['thumbs'] = self.lib.get_thumbs(vdict['movies'], 5, type='movie')
       return render_template('dashboard/movie.html', data=vdict)
     else:
@@ -61,6 +63,7 @@ class Movie():
 
     if 'logged-in' in session:
       vdict['movies'] = self.moviedb.select(vdict['dashboard_max_post'])
+      vdict['count'] = self.moviedb.count()
       vdict['thumbs'] = self.lib.get_thumbs(vdict['movies'], 5, type='movie')
       vdict['movie'] = self.moviedb.select(id=id)
       date = (vdict['movie'][6]).strftime('%d/%m/%Y')

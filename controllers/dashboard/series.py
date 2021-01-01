@@ -44,11 +44,13 @@ class Series():
         self.seriesdb.insert(id, playlist, title, country, content, date, time, author, ending)
 
       vdict['series'] = self.seriesdb.select(vdict['dashboard_max_post'])
+      vdict['count'] = self.seriesdb.count()
       vdict['thumbs'] = self.lib.get_thumbs(vdict['series'], 4, type='movie')
       return render_template('dashboard/series.html', data=vdict)
 
     elif 'logged-in' in session:
       vdict['series'] = self.seriesdb.select(vdict['dashboard_max_post'])
+      vdict['count'] = self.seriesdb.count()
       vdict['thumbs'] = self.lib.get_thumbs(vdict['series'], 4, type='movie')
       return render_template('dashboard/series.html', data=vdict)
     else:
@@ -61,6 +63,7 @@ class Series():
 
     if 'logged-in' in session:
       vdict['series'] = self.seriesdb.select(vdict['dashboard_max_post'])
+      vdict['count'] = self.seriesdb.count()
       vdict['thumbs'] = self.lib.get_thumbs(vdict['series'], 4, type='movie')
       vdict['serie'] = self.seriesdb.select(id=id)
       date = (vdict['serie'][5]).strftime('%d/%m/%Y')
