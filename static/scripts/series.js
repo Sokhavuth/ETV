@@ -35,6 +35,9 @@ class Series{
       </div>`;
     }else{
       var iframe = `<div class="fb-video" data-href="${src}" data-width="auto" data-show-captions="true"></div>`;
+      var width = $('#series-wrapper').css('width');
+      var height = parseInt(width)/16*9;
+      $('#series-wrapper').css('min-height', height);
     }
 
     $('#series-wrapper').html(iframe);
