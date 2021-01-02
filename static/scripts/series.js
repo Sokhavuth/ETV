@@ -40,13 +40,15 @@ class Series{
       $('#series-wrapper').css('min-height', height);
     }
 
-    function cb(){
-      $('#series-wrapper').css('min-height', 'auto');
-    }
+    $(window).resize(function(){
+      var width = $('#series-wrapper').css('width');
+      var height = parseInt(width)/16*9;
+      $('#series-wrapper').css('min-height', height);
+    });
 
     $('#series-wrapper').html(iframe);
     if((pl[index].type === 'Facebook') && (fb_api)){
-      FB.XFBML.parse(undefined, cb);
+      FB.XFBML.parse();
     }
     
   }
