@@ -1,5 +1,5 @@
-#controllers/dashboard/movie.py
-import config, copy, lib, datetime, uuid, json
+#controllers/dashboard/series.py
+import config, copy, lib, datetime, uuid
 from flask import render_template, session, request, redirect
 from models.seriesdb import Seriesdb
 
@@ -24,7 +24,6 @@ class Series():
       author = session['logged-in']
       ending = request.form['fend']
       edit_id = request.form['fedit-id']
-      print(edit_id)
       try:
         date = datetime.datetime.strptime(date, "%d/%m/%Y")
       except ValueError:
