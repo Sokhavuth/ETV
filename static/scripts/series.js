@@ -41,7 +41,10 @@ class Series{
     }
 
     $('#series-wrapper').html(iframe);
-    FB.XFBML.parse();
+    if((pl[index].type === 'Facebook') && (fb_api)){
+      FB.XFBML.parse();
+    }
+    
   }
 
   setEpisodes(playlist, ending){
