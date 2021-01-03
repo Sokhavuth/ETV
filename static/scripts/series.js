@@ -44,6 +44,9 @@ class Series{
       var width = $('#series-wrapper').css('width');
       var height = parseInt(width)/16*9;
       $('#series-wrapper').css('min-height', height);
+      if($('.fb-video') && (fb_api)){
+        FB.XFBML.parse();
+      }
     });
 
     $('#series-wrapper').html(iframe);
