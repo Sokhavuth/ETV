@@ -8,13 +8,13 @@ from controllers.dashboard.series import Series
 class Dashboard(FlaskView):
   def __init__(self):
     super().__init__()
+
+  @route('/')
+  def dashboard_index(self):
     self.user = User()
     self.index = Index()
     self.movie = Movie()
     self.series = Series()
-
-  @route('/')
-  def dashboard_index(self):
     return self.index.index()
 
   @route('/logout/')

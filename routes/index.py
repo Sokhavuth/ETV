@@ -12,15 +12,15 @@ from controllers.country_series import Country_series
 class Index(FlaskView):
   def __init__(self):
     super().__init__()
+ 
+  @route('/')
+  def index(self):
     self.login = Login()
     self.home = Home()
     self.movie = Movie()
     self.country = Country()
     self.series = Series()
     self.country_series = Country_series()
- 
-  @route('/')
-  def index(self):
     return self.home.get_youtube()
 
   @route('/login/', methods=['GET', 'POST'])
